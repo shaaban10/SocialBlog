@@ -1,0 +1,46 @@
+{% macro profile (account) %}
+    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+        <div class="card bg-light d-flex flex-fill">
+            <div class="card-header text-muted border-bottom-0">
+               {{ account.title }}
+            </div>
+            <div class="card-body pt-0">
+                <div class="row">
+                    <div class="col-7">
+                        <h2 class="lead"><b>{{ account.getFullName }}</b></h2>
+                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                            <li class="h6"><span class="fa-li"><i
+                                            class="fas fa-lg fa-building"></i></span>
+                                Address:
+                                {{ account.address }}
+                            </li>
+                            <li class="small"><span class="fa-li"><i
+                                            class="fas fa-lg fa-phone"></i></span> Phone
+                                #: +
+                                {{ account.phone }}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-5 text-center">
+                        <img src="{{ account.getAvatarPath() }}" alt="" class="img-circle img-fluid">
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer row">
+                <div class="col-md-6 text-left">
+                    {# <a href="" class="btn btn-sm btn-success">
+                        <i class="fas fa-plus"></i> Follow
+                    </a> #}
+                        {{ include("follower/_follow_button.html.twig", {userToFollow: account}) }}
+
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="{{ path('profile_page_view',{id: account.id}) }}" class="btn btn-sm btn-primary">
+                        <i class="fas fa-user"></i> View Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endmacro %}

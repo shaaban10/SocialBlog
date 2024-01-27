@@ -1,0 +1,19 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Password Reset Link Sent{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 mt-5">
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Password Reset Link Sent!</h4>
+                    <p>An email containing instructions to reset your password has been sent to <strong>{{email}}</strong>.</p>
+                    <hr>
+                    <p class="mb-0">Please check your email and follow the instructions to reset your password.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

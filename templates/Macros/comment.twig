@@ -1,0 +1,26 @@
+{% macro comment(comment) %}
+    <div class="card-comment">
+        <!-- User image -->
+        <a href="{{ path('profile_page_view', {'id': comment.account.id}) }}">
+            <img alt="User Image" class="img-circle img-sm" src="{{ asset(comment.account.getAvatarPath()) }}">
+        </a>
+
+        <div class="comment-text">
+            <span class="username">
+                <a href="{{ path('profile_page_view', {'id': comment.account.id}) }}">
+                    {{ comment.account.getFullName }}
+                </a>
+                <span class="text-muted float-right">{{ comment.createdAt|ago }}</span>
+            </span><!-- /.username -->
+            {{ comment.commentText }}
+            <a href="{{ path('delete_comment', {'id': comment.id}) }}" class="btn btn-tool" onclick="return confirm('Are you sure you want to delete this comment?');" type="button">
+        <i class="far fa-trash-alt"></i> Delete</a>
+      
+            <a href="{{ path('edit_comment', {'id': comment.id}) }}" class="btn btn-tool" onclick="return confirm('Are you sure you want to Edit this comment?');" type="button">
+        <i class="far fa-edit"></i> Edit</a>
+        
+</form>
+        </div>
+        <!-- /.comment-text -->
+    </div>
+{% endmacro %}
