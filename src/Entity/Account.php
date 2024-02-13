@@ -27,9 +27,7 @@ class Account extends User
     #[ORM\OneToMany(mappedBy: 'owner', targetEntity: Notification::class)]
     private Collection $notifications;
 
-    // #[ORM\OneToMany(mappedBy: 'account', targetEntity: Followers::class)]
-    // #[ORM\JoinColumn(nullable:false)]
-    // private Collection $followers;
+
    
     #[ORM\Column(type:"string",length: 255, nullable: true)]
     private  $avatar ;

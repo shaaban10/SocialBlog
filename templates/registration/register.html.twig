@@ -90,7 +90,16 @@
                                 }
                             }) }}
                         </div>
-                        <div class="form-group form-check">
+                        <div class="form-group">
+                            {{ form_row(registrationForm.userPhoto, {
+                                'label': 'userPhoto',
+                                'attr': {
+                                    'class': 'form-control',
+                                    'placeholder': 'userPhoto'
+                                }
+                            }) }}
+                        </div>
+                        {# <div class="form-group form-check">
                             {{ form_row(registrationForm.agreeTerms, {
                                 'label_attr': {
                                     'class': 'form-check-label'
@@ -99,10 +108,8 @@
                                     'class': 'form-check-input'
                                 }
                             }) }}
-                            <label class="form-check-label" for="{{ registrationForm.agreeTerms.vars.id }}">
-                                I agree to the terms and conditions
-                            </label>
-                        </div>
+                            
+                        </div> #}
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block">Register</button>
                         </div>

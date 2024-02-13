@@ -53,10 +53,10 @@ class PostController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
     #[Route("/list-deleted", name:"list_delete_posts_request")]
     public function listDeleteRequestAction()
     {
+
         return $this->render('delete_request.html.twig');
     }
 

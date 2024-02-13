@@ -18,7 +18,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-12 text-center">
-                            <h2 class="mt-4 mb-4"> Master Blog All Members Posts.</h2>
+                            <h2 id="mt-4" class="mt-4 mb-4"> Social Blog All Members Posts.</h2>
                             {% if is_granted("ROLE_ADMIN")== true %}
                             
 <h5 class="mt-4 mb-4" style="font-family: 'Roboto', sans-serif; font-size: 24px; font-weight: 700; color: #333; text-transform: uppercase;">
@@ -26,6 +26,8 @@
     <span style="font-size: 18px; color: #28a745;">You signed as an admin</span>
 </h5>                    
 {% endif %}
+
+          
    </div>
                     </div>
                 </div><!-- /.container-fluid -->
@@ -45,7 +47,9 @@
 
         {% include 'footer.html.twig' %}
      </div>
+<style>
 
+</style>
     </body>
 {% endblock %}
 

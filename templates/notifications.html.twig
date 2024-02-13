@@ -35,7 +35,7 @@
 
                                             <td class="mailbox-star user-panel">
                                                 <div class="img">
-                                                    <img alt="Avatar" class="img-circle elevation-2" src="{{ notification.account.avatar }}">
+                                                    <img alt="Avatar" class="img-circle elevation-2" src="{{ notification.account.getAvatarPath() }}">
                                                 </div>
                                             </td>
                                             <td class="mailbox-name text-center"><a href="{{ path('profile_page_view',{id:notification.account.id}) }}"> <b>{{ notification.account.getFullName() }}</b> Start Following You</a></td></td>

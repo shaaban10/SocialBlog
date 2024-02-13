@@ -123,14 +123,15 @@
                                                 <div class="card-body">
                                                     <div class="col-12">
                                                     <p5>{{ post.text }}</p5>
+                                                    </div>
+                                                    <div>
                                                         {% if post.photo %}
-                                                    <img class="img-fluid p
-                                                    " style="margin-bottom: 1rem;"
-                                                         src="{{ post.photo }}" alt="Photo">
+                                                    <img class="img-fluid p" style="margin-bottom: 1rem;width:100%;height:auto;" 
+                                                         src="{{ post.getPhotoPath() }}" alt="Photo">
                                                         {% endif %}
                                                     </div>
                                                     <div class="col-12">
-                                                    <button type="button" class="btn btn-default btn-sm"><i class="far fa-thumbs-up"></i> Likessss
+                                                    <button type="button" class="btn btn-default btn-sm"><i class="far fa-thumbs-up"></i> Like
                                                     </button>
                                                     <span class="float-right text-muted">{{ post.likedBy|length}} likes - {{ post.comments| length}}  comments</span>
                                                     </div>
@@ -158,7 +159,7 @@
                                                 </div>
                                                 <!-- /.card-footer -->
                                                 <div class="card-footer">
-                                                    <form action="#" method="post">
+                                                    <form action="#" id="formComment" method="post">
                                                         <img class="img-fluid img-circle img-sm"
                                                              src="{{ asset(account.getAvatarPath()) }}"
                                                              alt="Alt Text">
@@ -261,48 +262,20 @@
         </div>
     </div>
     </body>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.nav-pills a').on('click', function (e) {
-                e.preventDefault();
-                $(this).tab('show');
-            });
-        });
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Handle tab switching
+        $('.nav-pills a').on('click', function(e) {
+            e.preventDefault(); // Prevent the default link behavior
+            var target = $(this).attr('href'); // Get the target tab pane
 
-         $(document).ready(function () {
-        // Handle follow button click
-        $('.follow-btn').on('click', function () {
-            var accountId = $(this).data('account-id');
-            var isFollowing = $(this).text().trim() === 'Follow';
+            // Remove the 'active' class from all tab panes
+            $('.tab-pane').removeClass('active');
 
-            // Make an AJAX request to handle follow/unfollow
-            $.ajax({
-                url: '/follow', // Update the URL to the endpoint that handles follow/unfollow
-                type: 'POST',
-                data: { accountId: accountId, isFollowing: isFollowing },
-                success: function (response) {
-                    // Update the button text and style based on the response
-                    if (response.success) {
-                        if (isFollowing) {
-                            $(this).text('Unfollow');
-                            // Additional styling or actions for follow success
-                        } else {
-                            $(this).text('Follow');
-                            // Additional styling or actions for unfollow success
-                        }
-                    } else {
-                        // Handle error, display a message or take appropriate action
-                        console.error(response.error);
-                    }
-                },
-                error: function (error) {
-                    // Handle AJAX error, display a message or take appropriate action
-                    console.error(error);
-                }
-            });
+            // Add the 'active' class to the target tab pane
+            $(target).addClass('active');
         });
     });
-    </script>
+</script>
 {% endblock %}
